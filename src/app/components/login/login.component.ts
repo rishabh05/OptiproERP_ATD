@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AuthenticationService } from 'src/app/service/authentication.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,9 @@ export class LoginComponent implements OnInit {
   public defaultCompnyComboValue: any = [{ OPTM_COMPID: "Select Company" }];
   public listItems: Array<string> = this.defaultCompnyComboValue;
 
-  constructor(private auth:AuthenticationService) { }
+  modalRef: BsModalRef;
+
+  constructor(private auth:AuthenticationService, private modalService: BsModalService) { }
 
   ngOnInit() {
   
@@ -93,6 +96,11 @@ export class LoginComponent implements OnInit {
           
         )
 
+      }
+
+      openModal(template: TemplateRef<any>) {
+        this.modalRef = this.modalService.show(template,
+          Object.assign({}, { class: 'modal-dialog-centered' }));
       }
     }
     
