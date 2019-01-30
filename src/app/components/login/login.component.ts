@@ -7,8 +7,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
 
+export class LoginComponent implements OnInit {
   public loginId: string;
   public password: string;
   public showLoader: boolean;
