@@ -1,5 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
-
+html{
+    min-height: 100vh;
+    display: flex;
+}
+body{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    align-self: center;
+}
+app-root{
+    width: 100%;
+}
+.bg-image{
+    background-image: -webkit-gradient(linear, left bottom, right top, from(#25ddf5), color-stop(#00d3f7), color-stop(#00c8f9), color-stop(#00bdf8), color-stop(#00b1f6), color-stop(#00b2f4), color-stop(#00b3f3), color-stop(#00b4f1), color-stop(#00c1ea), color-stop(#00cbd5), color-stop(#00d3b6), to(#45d790));
+    background-image: -webkit-linear-gradient(left bottom, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
+    background-image: -o-linear-gradient(left bottom, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
+    background-image: linear-gradient(to right top, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
+}
+.shadow-box{
+    border-radius: 5px;
+    box-shadow: 5px 5px 24px 0px rgba(0, 0, 0, 0.2);
+    position: relative;
+    background-image: -webkit-gradient(linear, right top, left bottom, from(#25ddf5), color-stop(#00d3f7), color-stop(#00c8f9), color-stop(#00bdf8), color-stop(#00b1f6), color-stop(#00b2f4), color-stop(#00b3f3), color-stop(#00b4f1), color-stop(#00c1ea), color-stop(#00cbd5), color-stop(#00d3b6), to(#45d790));
+    background-image: -webkit-linear-gradient(right top, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
+    background-image: -o-linear-gradient(right top, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
+    background-image: linear-gradient(to left bottom, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
+}
+.shadow-box:before {
+    display: flex;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.5);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.timing_listing-wrapper{
+    padding: 15px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 24px 0px rgba(0, 0, 0, 0.2);
+}
 .timing_listing-wrapper .k-grid th {
     padding: .65rem .65rem;
     border-width: 0 0 1px 1px;
@@ -9,4 +54,16 @@
 .timing_listing-wrapper .k-grid .k-alt {
     color: #212529;
     background-color: rgba(33,37,41,0.03);
+}
+.modal-header {
+    background-image: -webkit-gradient(linear, right top, left bottom, from(#25ddf5), color-stop(#00d3f7), color-stop(#00c8f9), color-stop(#00bdf8), color-stop(#00b1f6), color-stop(#00b2f4), color-stop(#00b3f3), color-stop(#00b4f1), color-stop(#00c1ea), color-stop(#00cbd5), color-stop(#00d3b6), to(#45d790));
+    background-image: -webkit-linear-gradient(right top, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
+    background-image: -o-linear-gradient(right top, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
+    background-image: linear-gradient(to left bottom, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
+    color: #fff;
+}
+
+body.modal-open app-root{
+    filter: blur(8px);
+  -webkit-filter: blur(8px);
 }
