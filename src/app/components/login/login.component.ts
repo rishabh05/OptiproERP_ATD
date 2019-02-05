@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
   modalRef: BsModalRef;
 
   constructor(private auth:AuthenticationService, private modalService: BsModalService) { }
+  
+  mytime: Date = new Date();
 
   ngOnInit() {
   

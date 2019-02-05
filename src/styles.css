@@ -125,6 +125,16 @@ body.modal-open app-root{
     filter: blur(8px);
   -webkit-filter: blur(8px);
 }
+body.modal-open .datepicker {
+    z-index: 1200 !important;
+}
+.datepickerWrapper{
+    display: flex;
+    align-items: center;
+}
+.bs-timepicker-field {
+    width: 55px;
+}
 @media screen and (min-width:1025px) and (max-width:1199px){
     .col-right {
         width: 400px;
@@ -168,3 +178,4 @@ body.modal-open app-root{
         min-height: 100%;
     }
 }
+

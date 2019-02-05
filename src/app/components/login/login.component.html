@@ -47,7 +47,7 @@
  
   <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Sign Out Time</h4>
+      <h4 class="modal-title pull-left">Sign Out Date & Time</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -55,9 +55,29 @@
     <div class="modal-body px-5 pb-4">
         <form>
           <div class="form-group row mt-2">
-            <label for="updatedSignOutTime" class="form-label col-md-12">Sign Out Time</label>
-            <div class="col-md-12">
-              <input type="text" class="form-control" id="updatedSignOutTime" value="">
+            <label for="updatedSignOutTime" class="form-label col-md-12 mb-n3">Sign In Date & Time</label>
+            <div class="col-md-6 datepickerWrapper">
+                <input type="text"
+                placeholder="Datepicker"
+                class="form-control"
+                [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
+                bsDatepicker>
+            </div>
+            <div class="col-md-6">
+                <timepicker [(ngModel)]="mytime"></timepicker>
+            </div>
+          </div> 
+          <div class="form-group row mt-2">
+            <label for="updatedSignOutTime" class="form-label col-md-12 mb-n3">Sign Out Date & Time</label>
+            <div class="col-md-6 datepickerWrapper">
+                <input type="text"
+                placeholder="Datepicker"
+                class="form-control"
+                [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
+                bsDatepicker>
+            </div>
+            <div class="col-md-6">
+                <timepicker [(ngModel)]="mytime"></timepicker>
             </div>
           </div>          
           <div class="form-group row">
