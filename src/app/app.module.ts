@@ -8,7 +8,8 @@ import { ListingComponent } from './components/listing/listing.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpClientModule,
     GridModule,
     BrowserAnimationsModule,
-    ModalModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    ModalModule.forRoot(),
+    TimepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
