@@ -1,10 +1,10 @@
 <div class="timing_listing-wrapper mb-5">
-  <kendo-grid [data]="gridData" [height]="410">
-      <kendo-grid-column field="Date" title="Date" width="200">
+  <kendo-grid [kendoGridBinding]="gridData" [height]="410">
+      <kendo-grid-column field="OPTM_ENTRYDATE" title="Entry Date" width="200"> <!--format="{0:c}"-->
       </kendo-grid-column>
-      <kendo-grid-column field="SignInTime" title="Sign In Time">
+      <kendo-grid-column field="OPTM_STARTDATETIME" title="Sign In Time">
       </kendo-grid-column>
-      <kendo-grid-column field="SignOutTime" title="Sign Out Time">
+      <kendo-grid-column field="OPTM_ENDDATETIME" title="Sign Out Time">
       </kendo-grid-column>
   </kendo-grid>
-</div>
+</div>  

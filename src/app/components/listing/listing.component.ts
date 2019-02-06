@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { data } from '../../DemoData/Data';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-listing',
@@ -7,11 +6,13 @@ import { data } from '../../DemoData/Data';
   styleUrls: ['./listing.component.css']
 })
 export class ListingComponent implements OnInit {
-
+ @Input() gridData :any;
+  //@Output()emitPass: EventEmitter<number> = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit() {
+    console.log("--->",this.gridData);
   }
-  public gridData: any[] = data;
+
 
 }

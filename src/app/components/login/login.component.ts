@@ -1,6 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { RecordModel } from 'src/app/DemoData/Data';
+
 
 @Component({
   selector: 'app-login',
@@ -15,10 +17,21 @@ export class LoginComponent implements OnInit {
   public modelSource: any = [];
   public assignedCompanies: any = [];
   public selectedValue: any = [];
-  public showGrid: boolean;
+  public showGrid: boolean = false;
   public todayDate: any;
   public gridData = [];
-  public psURL: string = "http://172.16.6.140/OptiAdmin";
+  public EntryDate:any;
+  public status: number;
+  public endDate: any;
+  public imported: boolean;
+  public importDate: any;
+  public modifyDate: any;
+  public empId:number;
+  public recordModel: RecordModel[]; 
+  
+  //public psURL: string = "http://172.16.6.140/OptiAdmin";
+  public psURL: string = "";
+  public adminDBName: string = "OPTIPROADMIN";
   public defaultCompnyComboValue: any = [{ OPTM_COMPID: "Select Company" }];
   public listItems: Array<string> = this.defaultCompnyComboValue;
 
@@ -27,25 +40,53 @@ export class LoginComponent implements OnInit {
   constructor(private auth:AuthenticationService, private modalService: BsModalService) { }
 
   ngOnInit() {
-  
+    this.getPSURL();
+  }
+
+  getPSURL() {
+    this.auth.getPSURL(this.adminDBName).subscribe(
+      data => {
+        if (data != null) {
+          this.psURL = data;
+          //For code analysis remove in live enviorments.
+          //this.psURL = "http://localhost:9500/";
+          //this.psURL = "http://172.16.6.140/OptiAdmin";
+        }
+      },
+      error => {
+        //this.toastr.error('', 'There was some error', this.baseClassObj.messageConfig);
+        alert('There was some error in getting psURL:  '+error);
+        this.showLoader = false;
+      }
+    )
   }
 
   OnSignIn(){
-    this.showGrid = true;
+    
     this.todayDate =  new Date();
-   // this.todayDate = moment().format('MMMM Do YYYY, h:mm:ss a');
-
-    /*this.gridData = [{
-
-      'date': this.todayDate,
-      'signIn': ,
-      'signOut': 
-    }]*/
-
+   // this.EntryDate = Date.now();
+   this.EntryDate = new Date();
+    
+   
+   this.auth.submitSignIn(this.selectedValue.OPTM_COMPID,this.selectedValue.OPTM_EMPID,this.EntryDate,this.todayDate,this.endDate,this.status,this.imported,this.importDate,this.modifyDate,this.loginId).subscribe(
+   data => {
+    console.log(data);
+    
+    this.recordModel = data.Table;
+    this.showGrid = true;
+   });
   }
 
   OnSignOut(){
     this.showGrid = false;
+    
+    /*this.auth.submitSignOut(this.selectedValue.OPTM_COMPID,this.selectedValue.OPTM_EMPID,this.EntryDate,this.todayDate,this.endDate,this.status,this.imported,this.importDate,this.modifyDate,this.loginId).subscribe(
+    data => {
+      console.log(data);
+      
+      //this.recordModel = data.Table;
+      this.showGrid = false;
+    });*/
   }
 
   OnPasswordBlur(){
@@ -83,7 +124,7 @@ export class LoginComponent implements OnInit {
               this.assignedCompanies = data.Table;
               if (this.assignedCompanies != null) {
                 //If comp found            
-                this.selectedValue = this.assignedCompanies[0];               
+                this.selectedValue = this.assignedCompanies[0];            
                 
               }
               else {
