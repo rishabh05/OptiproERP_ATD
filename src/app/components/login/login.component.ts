@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   public showLoader: boolean;
   public modelSource: any = [];
   public assignedCompanies: any = [];
-  public selectedValue: any = [];
+  public selectedValue: any;
   public showGrid: boolean = false;
   public todayDate: any;
   public gridData = [];
@@ -34,6 +34,9 @@ export class LoginComponent implements OnInit {
   public adminDBName: string = "OPTIPROADMIN";
   public defaultCompnyComboValue: any = [{ OPTM_COMPID: "Select Company" }];
   public listItems: Array<string> = this.defaultCompnyComboValue;
+  public selectComp:any;
+
+  public showButton: boolean;
 
   modalRef: BsModalRef;
 
@@ -42,7 +45,7 @@ export class LoginComponent implements OnInit {
   mytime: Date = new Date();
 
   ngOnInit() {
-    this.getPSURL();
+    this.getPSURL();    
   }
 
   getPSURL() {
@@ -64,6 +67,9 @@ export class LoginComponent implements OnInit {
   }
 
   OnSignIn(){
+
+    localStorage.setItem('selectedComp', this.selectedValue.OPTM_COMPID);      
+    localStorage.setItem('loggedInUser', this.loginId);
     
     this.todayDate =  new Date();
    // this.EntryDate = Date.now();
@@ -81,16 +87,22 @@ export class LoginComponent implements OnInit {
 
   OnSignOut(){
     this.showGrid = false;
+
+    this.todayDate =  new Date();
     
-    /*this.auth.submitSignOut(this.selectedValue.OPTM_COMPID,this.selectedValue.OPTM_EMPID,this.EntryDate,this.todayDate,this.endDate,this.status,this.imported,this.importDate,this.modifyDate,this.loginId).subscribe(
+    this.auth.submitSignOut(this.selectedValue.OPTM_COMPID,this.selectedValue.OPTM_EMPID,this.endDate,this.endDate,this.todayDate,this.status,this.imported,this.importDate,this.modifyDate,this.loginId).subscribe(
     data => {
       console.log(data);
-      
-      //this.recordModel = data.Table;
       this.showGrid = false;
-    });*/
+    });
   }
 
+  OnDropDownBlur(){
+
+    alert(1);
+  }
+
+ 
   OnPasswordBlur(){
 
     //if(this.password != null && this.password != undefined && this.password != ''){
@@ -105,6 +117,8 @@ export class LoginComponent implements OnInit {
             this.listItems = this.defaultCompnyComboValue;
             this.selectedValue = this.listItems[0];
           }
+
+         
         },
         error => {
           alert('There was some error');
@@ -125,8 +139,27 @@ export class LoginComponent implements OnInit {
               //Show the Company Combo box          
               this.assignedCompanies = data.Table;
               if (this.assignedCompanies != null) {
-                //If comp found            
-                this.selectedValue = this.assignedCompanies[0];            
+                //If comp found    
+                
+                if (localStorage.getItem('loggedInUser') != null && localStorage.getItem('loggedInUser') != undefined) {
+                  
+                //   this.assignedCompanies.forEach(function (value) {                  
+                //    if(value.OPTM_COMPID ==  localStorage.getItem('selectedComp')){
+                //      var newVar =  value;
+                //      this.selectedValue = newVar;   
+                //    }
+                //  }); 
+                
+                for (let i = 0; i < this.assignedCompanies.length; i++) {
+                  if(this.assignedCompanies[i].OPTM_COMPID ==  localStorage.getItem('selectedComp')){
+                    this.selectedValue = this.assignedCompanies[i]; 
+                 }
+               }                        
+              }
+               else {
+                this.selectedValue = this.assignedCompanies[0];        
+               }             
+                
                 
               }
               else {

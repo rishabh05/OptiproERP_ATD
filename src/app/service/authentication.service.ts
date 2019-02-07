@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -60,10 +61,10 @@ export class AuthenticationService {
   //JSON Obeject Prepared to be send as a param to API
   let jObject:any={ ATDRecord: JSON.stringify([{ 
     CompanyDBID: CompanyDBID, 
-    EmpId: 18, 
+    EmpId: EmpId, 
     EntryDate:EntryDate,
     StartDateTime:StartDateTime,
-    EndDateTime:EndDateTime,
+    //EndDateTime:'',
     Status:1,
     Imported:'N',
     ImportDate:'',
@@ -73,6 +74,29 @@ export class AuthenticationService {
 
   //Return the response form the API  
   return this.httpClient.post(this.serviceUrl +"/Login/SubmitRecord",jObject,this.httpOptions);
+
+  }
+
+  submitSignOut(CompanyDBID:string,EmpId:number,
+    EntryDate:Date,StartDateTime:any,EndDateTime:any,Status:number,
+    Imported:boolean,ImportDate:Date,ModifyDate:Date,UserId:any):Observable<any>{
+
+  //JSON Obeject Prepared to be send as a param to API
+  let jObject:any={ ATDRecord: JSON.stringify([{ 
+    CompanyDBID: CompanyDBID, 
+    EmpId: EmpId, 
+    EntryDate:'',
+    StartDateTime:'',
+    EndDateTime:EndDateTime,
+    Status:2,
+    Imported:'N',
+    ImportDate:'',
+    ModifyDate:'',
+    UserId:UserId    
+  }]) };
+
+  //Return the response form the API  
+  return this.httpClient.post(this.serviceUrl +"/Login/SignOutRecord",jObject,this.httpOptions);
 
   }
 
