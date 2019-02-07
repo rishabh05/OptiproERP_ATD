@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.3",
+    "@angular/cdk": "^6.3.0",
     "@angular/common": "^6.0.3",
     "@angular/compiler": "^6.0.3",
     "@angular/core": "^6.0.3",
@@ -35,6 +36,7 @@
     "bootstrap": "4.2.1",
     "core-js": "^2.5.4",
     "moment": "^2.24.0",
+    "ng-pick-datetime": "^7.0.0",
     "ngx-bootstrap": "^3.2.0",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.0.0",

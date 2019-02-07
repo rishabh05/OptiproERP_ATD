@@ -1,92 +1,74 @@
 <main role="main" class="main-container">
-  <div class="content">
-    <div class="col-left">
-    </div>
-    <div class="col-right">
-      <div class="login-box mt-4 mb-5">
-        <h1 class="text-center mb-4">Attendence</h1>
-        <form autocomplete="off">
-          <div class="form-group">
-            <label for="email" class="form-label">User Id</label>
-            <input autofocus type="text" autocomplete="off" class="form-control" id="email"placeholder="Enter User Id" value="" [(ngModel)]="loginId" [disabled]="showGrid" [ngModelOptions]="{standalone: true}">
-          </div>
-          <div class="form-group">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" autocomplete="off" id="password" placeholder="Enter Password" [(ngModel)]="password" [disabled]="showGrid" (blur)="OnPasswordBlur()"
-              [ngModelOptions]="{standalone: true}">
-          </div>
-          <div class="form-group">
-              <label class="form-label" for="form-company">Company</label>
-              <select type="company" name="form-company" [(ngModel)]="selectedValue" class="form-username form-control"
-                  id="form-company" [disabled]="showGrid" (blur)="OnDropDownBlur()">
+    <div class="content">
+        <div class="col-left">
+        </div>
+        <div class="col-right">
+            <div class="login-box mt-4 mb-5">
+                <h1 class="text-center mb-4">Attendence</h1>
+                <form autocomplete="off">
+                    <div class="form-group">
+                        <label for="email" class="form-label">User Id</label>
+                        <input autofocus type="text" autocomplete="off" class="form-control" id="email" placeholder="Enter User Id" value="" [(ngModel)]="loginId" [disabled]="showGrid" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" autocomplete="off" id="password" placeholder="Enter Password" [(ngModel)]="password" [disabled]="showGrid" (blur)="OnPasswordBlur()" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="form-company">Company</label>
+                        <select type="company" name="form-company" [(ngModel)]="selectedValue" class="form-username form-control" id="form-company" [disabled]="showGrid" (blur)="OnDropDownBlur()">
                 
                   <option *ngFor="let cmp of assignedCompanies" name="selcompany" [ngValue]="cmp">{{cmp.cmpName}}
                       ({{cmp.OPTM_COMPID}})</option> 
               </select>
-          </div>
-          <div class="form-group" *ngIf="!showGrid && showSignIn">
-            <div class="mt-4">
-              <input class="btn btn-outline-light btn-block" type="submit" value="Sign In" (click)="OnSignIn()">
+                    </div>
+                    <div class="form-group" *ngIf="!showGrid && showSignIn">
+                        <div class="mt-4">
+                            <input class="btn btn-outline-light btn-block" type="submit" value="Sign In" (click)="OnSignIn()">
+                        </div>
+                    </div>
+                    <div class="col-6 mt-4 mt-md-4 mt-lg-4 mt-xl-4">
+                        <button class="btn btn-light btn-block" type="button" (click)="openModal(template)">Exception</button>
+                    </div>
+                    <div class="form-group" *ngIf="showGrid && showSignOut">
+                        <div class="row">
+                            <div class="col-6 mt-4 mt-md-4 mt-lg-4 mt-xl-4">
+                                <button class="btn btn-danger btn-block" type="submit" (click)="OnSignOut()">Sign Out</button>
+                            </div>
+                            <div class="col-6 mt-4 mt-md-4 mt-lg-4 mt-xl-4">
+                                <button class="btn btn-light btn-block" type="button" (click)="openModal(template)">Exception</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-          </div>
-          <div class="form-group" *ngIf="showGrid && showSignOut">
-            <div class="row">
-                <div class="col-6 mt-4 mt-md-4 mt-lg-4 mt-xl-4">
-                    <button class="btn btn-danger btn-block" type="submit" (click)="OnSignOut()">Sign Out</button>
-                </div>
-                <div class="col-6 mt-4 mt-md-4 mt-lg-4 mt-xl-4">
-                    <button class="btn btn-light btn-block" type="button" (click)="openModal(template)">Exception</button>
-                </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <app-listing *ngIf="showGrid" [gridData]="recordModel"></app-listing>
+            <app-listing *ngIf="showGrid" [gridData]="recordModel"></app-listing>
+        </div>
     </div>
-  </div>
- 
-  <ng-template #template>
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">Sign Out Date & Time</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+
+    <ng-template #template>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Sign Out Date & Time</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
-    </div>
-    <div class="modal-body px-5 pb-4">
-        <form>
-          <div class="form-group row mt-2">
-            <label for="updatedSignOutTime" class="form-label col-md-12 mb-n3">Sign In Date & Time</label>
-            <div class="col-md-6 datepickerWrapper">
-                <input type="text"
-                placeholder="Datepicker"
-                class="form-control"
-                [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
-                bsDatepicker>
-            </div>
-            <div class="col-md-6">
-                <timepicker [(ngModel)]="mytime"></timepicker>
-            </div>
-          </div> 
-          <div class="form-group row mt-2">
-            <label for="updatedSignOutTime" class="form-label col-md-12 mb-n3">Sign Out Date & Time</label>
-            <div class="col-md-6 datepickerWrapper">
-                <input type="text"
-                placeholder="Datepicker"
-                class="form-control"
-                [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
-                bsDatepicker>
-            </div>
-            <div class="col-md-6">
-                <timepicker [(ngModel)]="mytime"></timepicker>
-            </div>
-          </div>          
-          <div class="form-group row">
-            <div class="col-8 offset-2 col-md-6 offset-md-3 mt-3 text-center">
-              <input class="btn btn-primary btn-block" type="submit" value="Update">
-            </div>
-          </div>
-        </form>
-      </div>
-  </ng-template>
+        </div>
+        <div class="modal-body px-5 pb-4">
+            <form>
+                <div class="form-group mt-2">
+                    <label for="email" class="form-label">Sign In Time</label>
+                    <input autofocus type="text" autocomplete="off" class="form-control" id="signInTime" placeholder="Sign In Time" value="" [(ngModel)]="loginId" [disabled]="showGrid" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="form-group mt-2">
+                    <input [owlDateTime]="dt1" class="form-control" [owlDateTimeTrigger]="dt1" placeholder="Date Time">
+                    <owl-date-time #dt1></owl-date-time>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 col-md-6 offset-md-3 mt-3 text-center">
+                        <input class="btn btn-primary btn-block" type="submit" value="Update">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </ng-template>
 </main>
-

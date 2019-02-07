@@ -1,10 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-html{
+
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+html {
     min-height: 100vh;
     display: flex;
     position: relative;
 }
-body{
+
+body {
     display: flex;
     width: 100%;
     align-items: center;
@@ -12,16 +15,20 @@ body{
     height: 100%;
     align-self: center;
 }
-app-root, app-login{
+
+app-root,
+app-login {
     width: 100%;
     height: 100%;
 }
-.main-container{
+
+.main-container {
     max-width: 80%;
     margin: 0 auto;
     display: flex;
 }
-.content{
+
+.content {
     border-radius: 5px;
     box-shadow: 5px 5px 24px 0px rgba(0, 0, 0, 0.2);
     width: 100%;
@@ -29,12 +36,13 @@ app-root, app-login{
     display: flex;
     overflow: auto;
 }
-.bg-image{
+
+.bg-image {
     background: url(./assets/images/body-bg-new-5.jpg) no-repeat;
-    background-size:cover; 
-    
+    background-size: cover;
 }
-.bg-image:before{
+
+.bg-image:before {
     content: "";
     background-image: -webkit-gradient(linear, left bottom, right top, from(#25ddf5), color-stop(#00d3f7), color-stop(#00c8f9), color-stop(#00bdf8), color-stop(#00b1f6), color-stop(#00b2f4), color-stop(#00b3f3), color-stop(#00b4f1), color-stop(#00c1ea), color-stop(#00cbd5), color-stop(#00d3b6), to(#45d790));
     background-image: -webkit-linear-gradient(left bottom, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
@@ -43,18 +51,20 @@ app-root, app-login{
     position: absolute;
     width: 100%;
     height: 100%;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     z-index: -1;
     opacity: 0.6;
 }
-.col-left{
+
+.col-left {
     width: 100%;
     background: url(./assets/images/body-bg-new-1.jpg) no-repeat;
-    background-size:cover; 
+    background-size: cover;
     position: relative;
 }
-.col-left:before{
+
+.col-left:before {
     content: "";
     background-image: -webkit-gradient(linear, left bottom, right top, from(#25ddf5), color-stop(#00d3f7), color-stop(#00c8f9), color-stop(#00bdf8), color-stop(#00b1f6), color-stop(#00b2f4), color-stop(#00b3f3), color-stop(#00b4f1), color-stop(#00c1ea), color-stop(#00cbd5), color-stop(#00d3b6), to(#45d790));
     background-image: -webkit-linear-gradient(left bottom, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
@@ -63,17 +73,18 @@ app-root, app-login{
     position: absolute;
     width: 100%;
     height: 100%;
-    top:0;
-    left:0;
-    z-index:1;
+    top: 0;
+    left: 0;
+    z-index: 1;
     opacity: 0.15;
 }
-.col-right{
+
+.col-right {
     width: 500px;
     flex: 0 0 500px;
     max-width: 500px;
     min-height: 665px;
-    display:flex;
+    display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -84,35 +95,47 @@ app-root, app-login{
     color: #fff;
 }
 
-.login-box{
+.login-box {
     padding: 0 50px;
     width: 100%;
 }
-.login-box .form-group{margin-bottom:10px;}
+
+.login-box .form-group {
+    margin-bottom: 10px;
+}
+
 .login-box label {
     margin-bottom: 3px;
 }
-.login-box h1{
+
+.login-box h1 {
     line-height: 1;
     color: #fff;
 }
-.btn, .form-control{border-radius: 0}
-.timing_listing-wrapper{
+
+.btn,
+.form-control {
+    border-radius: 0
+}
+
+.timing_listing-wrapper {
     padding: 0 50px 20px;
 }
+
 .timing_listing-wrapper .k-grid th {
     padding: .65rem .65rem;
     border-width: 0 0 1px 1px;
     white-space: nowrap;
     font-weight: 700
 }
+
 .timing_listing-wrapper .k-grid .k-alt {
     color: #212529;
-    background-color: rgba(33,37,41,0.03);
+    background-color: rgba(33, 37, 41, 0.03);
 }
-.timing_listing-wrapper .k-grid-header{
 
-}
+.timing_listing-wrapper .k-grid-header {}
+
 .modal-header {
     background-image: -webkit-gradient(linear, right top, left bottom, from(#25ddf5), color-stop(#00d3f7), color-stop(#00c8f9), color-stop(#00bdf8), color-stop(#00b1f6), color-stop(#00b2f4), color-stop(#00b3f3), color-stop(#00b4f1), color-stop(#00c1ea), color-stop(#00cbd5), color-stop(#00d3b6), to(#45d790));
     background-image: -webkit-linear-gradient(right top, #25ddf5, #00d3f7, #00c8f9, #00bdf8, #00b1f6, #00b2f4, #00b3f3, #00b4f1, #00c1ea, #00cbd5, #00d3b6, #45d790);
@@ -121,61 +144,75 @@ app-root, app-login{
     color: #fff;
 }
 
-body.modal-open app-root{
+body.modal-open app-root {
     filter: blur(8px);
-  -webkit-filter: blur(8px);
+    -webkit-filter: blur(8px);
 }
+
 body.modal-open .datepicker {
     z-index: 1200 !important;
 }
-.datepickerWrapper{
+
+.datepickerWrapper {
     display: flex;
     align-items: center;
 }
-.bs-timepicker-field {
-    width: 55px;
+
+.cdk-overlay-container {
+    position: fixed;
+    z-index: 1052;
 }
-@media screen and (min-width:1025px) and (max-width:1199px){
+
+.owl-dt-calendar-table .owl-dt-calendar-cell-today:not(.owl-dt-calendar-cell-selected) {
+    border-color: rgb(0, 194, 249);
+    background-color: #00b2f5;
+    color: #fff;
+}
+
+@media screen and (min-width:1025px) and (max-width:1199px) {
     .col-right {
         width: 400px;
         flex: 0 0 400px;
         max-width: 400px;
     }
-    .login-box{
+    .login-box {
         padding: 0 20px;
     }
-    .timing_listing-wrapper{
+    .timing_listing-wrapper {
         padding: 0 20px 20px;
-    }
-}
-@media screen and (max-width:1024px){
-    .col-left{display: none;}
-    .col-right{
-        width: 100%;
-        flex: 0 0 100%;
-        max-width: 100%;
-        min-height: 100%;
-    }
-    .main-container{
-        margin: 50px auto;
-    }
-}
-@media screen and (max-width:767px){
-    .main-container{
-        max-width: 100%;
-        padding: 0 20px;
-    }
-    .login-box{
-        padding: 0 20px;
-    }
-    .timing_listing-wrapper{
-        padding: 0 20px 20px;
-    }
-    .col-right{
-        width: 100%;
-        flex: 0 0 100%;
-        max-width: 100%;
-        min-height: 100%;
     }
 }
 
+@media screen and (max-width:1024px) {
+    .col-left {
+        display: none;
+    }
+    .col-right {
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        min-height: 100%;
+    }
+    .main-container {
+        margin: 50px auto;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .main-container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    .login-box {
+        padding: 0 20px;
+    }
+    .timing_listing-wrapper {
+        padding: 0 20px 20px;
+    }
+    .col-right {
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        min-height: 100%;
+    }
+}

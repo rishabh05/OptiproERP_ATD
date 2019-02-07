@@ -8,8 +8,8 @@ import { ListingComponent } from './components/listing/listing.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,9 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     HttpClientModule,
     GridModule,
     BrowserAnimationsModule,
-    BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
-    TimepickerModule.forRoot()
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
