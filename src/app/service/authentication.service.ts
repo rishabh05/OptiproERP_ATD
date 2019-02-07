@@ -47,7 +47,7 @@ export class AuthenticationService {
 
   getRecord(CompanyDBID:string,EmpId:number):Observable<any>{
     //JSON Obeject Prepared to be send as a param to API
-    let jObject:any={ RecordToDisplay: JSON.stringify([{ CompanyDBID: CompanyDBID, EmpId: EmpId
+    let jObject:any={ ATDRecord: JSON.stringify([{ CompanyDBID: CompanyDBID, EmpId: EmpId
   }]) };
   //Return the response form the API  
   return this.httpClient.post(this.serviceUrl +"/Login/GetRecord",jObject,this.httpOptions);
@@ -75,6 +75,16 @@ export class AuthenticationService {
   //Return the response form the API  
   return this.httpClient.post(this.serviceUrl +"/Login/SubmitRecord",jObject,this.httpOptions);
 
+  }
+
+  
+
+  getStatusForButtons(CompanyDBID:string,EmpId:number):Observable<any>{
+    //JSON Obeject Prepared to be send as a param to API
+    let jObject:any={ ATDRecord: JSON.stringify([{ CompanyDBID: CompanyDBID, EmpId: EmpId
+  }]) };
+  //Return the response form the API  
+  return this.httpClient.post(this.serviceUrl +"/Login/GetStatus",jObject,this.httpOptions);
   }
 
   submitSignOut(CompanyDBID:string,EmpId:number,

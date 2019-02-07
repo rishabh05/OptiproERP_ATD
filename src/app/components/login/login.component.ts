@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
   public listItems: Array<string> = this.defaultCompnyComboValue;
   public selectComp:any;
 
-  public showButton: boolean;
+  public showSignIn: boolean;
+  public showSignOut: boolean;
 
   modalRef: BsModalRef;
 
@@ -98,8 +99,30 @@ export class LoginComponent implements OnInit {
   }
 
   OnDropDownBlur(){
+    //alert(1);
+    this.auth.getStatusForButtons(this.selectedValue.OPTM_COMPID,this.selectedValue.OPTM_EMPID).subscribe(
+    data => {
+      console.log(data);
+      //this.showGrid = false;
+      if(data == [] || data.length == 0 || data[0].OPTM_STATUS == 2 || data[0].OPTM_STATUS == 3){
+        this.showSignIn = true;
+        this.showSignOut = false;
+      }
+      else if(data[0].OPTM_STATUS == 1){
+        this.showGrid = true;
+        this.showSignIn = false;
+        this.showSignOut = true;
 
-    alert(1);
+        this.auth.getRecord(this.selectedValue.OPTM_COMPID,this.selectedValue.OPTM_EMPID).subscribe(
+        data => {
+          console.log(data);
+          this.recordModel = data;
+         // this.showGrid = false;
+        });
+
+      }
+
+    });
   }
 
  

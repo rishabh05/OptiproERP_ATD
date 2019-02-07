@@ -24,12 +24,12 @@
                       ({{cmp.OPTM_COMPID}})</option> 
               </select>
           </div>
-          <div class="form-group" *ngIf="!showGrid">
+          <div class="form-group" *ngIf="!showGrid && showSignIn">
             <div class="mt-4">
               <input class="btn btn-outline-light btn-block" type="submit" value="Sign In" (click)="OnSignIn()">
             </div>
           </div>
-          <div class="form-group" *ngIf="showGrid">
+          <div class="form-group" *ngIf="showGrid && showSignOut">
             <div class="row">
                 <div class="col-6 mt-4 mt-md-4 mt-lg-4 mt-xl-4">
                     <button class="btn btn-danger btn-block" type="submit" (click)="OnSignOut()">Sign Out</button>

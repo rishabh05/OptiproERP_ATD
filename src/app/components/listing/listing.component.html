@@ -3,8 +3,14 @@
       <kendo-grid-column field="OPTM_ENTRYDATE" title="Entry Date" width="100"> <!--format="{0:c}"-->
       </kendo-grid-column>
       <kendo-grid-column field="OPTM_STARTDATETIME" title="Sign In Time">
+          <ng-template kendoGridCellTemplate let-dataItem>
+              {{dataItem.OPTM_STARTDATETIME | date:'dd/MM/yyyy HH:mm'}}
+              </ng-template>  
       </kendo-grid-column>
       <kendo-grid-column field="OPTM_ENDDATETIME" title="Sign Out Time">
+          <ng-template kendoGridCellTemplate let-dataItem>
+              {{dataItem.OPTM_ENDDATETIME | date:'dd/MM/yyyy HH:mm'}}
+              </ng-template> 
       </kendo-grid-column>
   </kendo-grid>
 </div>  
