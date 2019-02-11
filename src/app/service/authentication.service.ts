@@ -51,19 +51,20 @@ export class AuthenticationService {
   }]) };
   //Return the response form the API  
   return this.httpClient.post(this.serviceUrl +"/Login/GetRecord",jObject,this.httpOptions);
-  }
-
- 
+  }  
+   
   submitSignIn(CompanyDBID:string,EmpId:number,
     EntryDate:Date,StartDateTime:any,EndDateTime:any,Status:number,
     Imported:boolean,ImportDate:Date,ModifyDate:Date,UserId:any):Observable<any>{
+
+   let StartDateTimeNew = new Date(StartDateTime).toLocaleString();
 
   //JSON Obeject Prepared to be send as a param to API
   let jObject:any={ ATDRecord: JSON.stringify([{ 
     CompanyDBID: CompanyDBID, 
     EmpId: EmpId, 
     EntryDate:EntryDate,
-    StartDateTime:StartDateTime,
+    StartDateTime:StartDateTimeNew,
     //EndDateTime:'',
     Status:1,
     Imported:'N',
@@ -74,10 +75,7 @@ export class AuthenticationService {
 
   //Return the response form the API  
   return this.httpClient.post(this.serviceUrl +"/Login/SubmitRecord",jObject,this.httpOptions);
-
-  }
-
-  
+  }  
 
   getStatusForButtons(CompanyDBID:string,EmpId:number):Observable<any>{
     //JSON Obeject Prepared to be send as a param to API
@@ -91,14 +89,16 @@ export class AuthenticationService {
     EntryDate:Date,StartDateTime:any,EndDateTime:any,Status:number,
     Imported:boolean,ImportDate:Date,ModifyDate:Date,UserId:any):Observable<any>{
 
+   let EndDateTimeNew = new Date(EndDateTime).toLocaleString();
+
   //JSON Obeject Prepared to be send as a param to API
   let jObject:any={ ATDRecord: JSON.stringify([{ 
     CompanyDBID: CompanyDBID, 
     EmpId: EmpId, 
     EntryDate:'',
     StartDateTime:'',
-    EndDateTime:EndDateTime,
-    Status:2,
+    EndDateTime:EndDateTimeNew,
+    Status:Status,
     Imported:'N',
     ImportDate:'',
     ModifyDate:'',
@@ -107,7 +107,51 @@ export class AuthenticationService {
 
   //Return the response form the API  
   return this.httpClient.post(this.serviceUrl +"/Login/SignOutRecord",jObject,this.httpOptions);
+  }
 
+  //Get Server Date
+  getServerDate(CompanyDBID:string):Observable<any>{
+    //JSON Obeject Prepared to be send as a param to API
+    let jObject:any={ ATDRecord: JSON.stringify([{ 
+     CompanyDBID: CompanyDBID
+   }])};
+ //Return the response form the API  
+ return this.httpClient.post(this.serviceUrl+"/Login/GetServerDate",jObject,this.httpOptions);
+ }
+
+ //Get Server Date
+ getMinutes(CompanyDBID:string,OutDateTime:any):Observable<any>{
+  //JSON Obeject Prepared to be send as a param to API
+  let jObject:any={ ATDRecord: JSON.stringify([{ 
+   CompanyDBID: CompanyDBID,
+   OutDateTime:OutDateTime
+ }])};
+//Return the response form the API  
+return this.httpClient.post(this.serviceUrl+"/Login/GetMinutes",jObject,this.httpOptions);
+}
+
+  updateRecord(CompanyDBID:string,EmpId:number,
+    EntryDate:Date,StartDateTime:any,EndDateTime:any,Status:number,
+    Imported:boolean,ImportDate:Date,ModifyDate:Date,UserId:any):Observable<any>{
+
+   let EndDateTimeNew = new Date(EndDateTime).toLocaleString();
+
+  //JSON Obeject Prepared to be send as a param to API
+  let jObject:any={ ATDRecord: JSON.stringify([{ 
+    CompanyDBID: CompanyDBID, 
+    EmpId: EmpId, 
+    EntryDate:'',
+    StartDateTime:'',
+    EndDateTime:EndDateTimeNew,
+    Status:Status,
+    Imported:'N',
+    ImportDate:'',
+    ModifyDate:'',
+    UserId:UserId    
+  }]) };
+
+  //Return the response form the API  
+  return this.httpClient.post(this.serviceUrl +"/Login/UpdateRecord",jObject,this.httpOptions);
   }
 
 }

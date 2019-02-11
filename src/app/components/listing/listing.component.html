@@ -4,13 +4,18 @@
       </kendo-grid-column>
       <kendo-grid-column field="OPTM_STARTDATETIME" title="Sign In Time">
           <ng-template kendoGridCellTemplate let-dataItem>
-              {{dataItem.OPTM_STARTDATETIME | date:'dd/MM/yyyy HH:mm'}}
+              {{dataItem.OPTM_STARTDATETIME | date:'MM/dd/yyyy HH:mm'}}
               </ng-template>  
       </kendo-grid-column>
       <kendo-grid-column field="OPTM_ENDDATETIME" title="Sign Out Time">
           <ng-template kendoGridCellTemplate let-dataItem>
-              {{dataItem.OPTM_ENDDATETIME | date:'dd/MM/yyyy HH:mm'}}
+              {{dataItem.OPTM_ENDDATETIME | date:'MM/dd/yyyy HH:mm'}}
               </ng-template> 
       </kendo-grid-column>
+      <!-- <kendo-grid-column field="DifferenceCal" title="Difference">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{dataItem.Difference}}
+                </ng-template> 
+        </kendo-grid-column> -->
   </kendo-grid>
 </div>  
