@@ -9,7 +9,7 @@ import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 export class AuthenticationService {
 
   //public serviceUrl: string = 'http://localhost:25875/';
-  public serviceUrl: string = 'http://localhost:38866/';
+  //public serviceUrl: string = 'http://localhost:38867/';
 
   constructor(private httpClient : HttpClient) { }
 
@@ -38,22 +38,22 @@ export class AuthenticationService {
   }
 
   //Get psURL
-  getPSURL(CompanyDBID:string):Observable<any>{
+  getPSURL(optiProAttendanceAPIURL:string,CompanyDBID:string):Observable<any>{
     //JSON Obeject Prepared to be send as a param to API
     let jObject: any = { PSURL: JSON.stringify([{ CompanyDBID: CompanyDBID }]) };
     //Return the response form the API  
-    return this.httpClient.post(this.serviceUrl + "/Login/GetPSURL", jObject, this.httpOptions);  
+    return this.httpClient.post(optiProAttendanceAPIURL + "/Login/GetPSURL", jObject, this.httpOptions);  
   }
 
-  getRecord(CompanyDBID:string,EmpId:number):Observable<any>{
+  getRecord(optiProAttendanceAPIURL:string,CompanyDBID:string,EmpId:number):Observable<any>{
     //JSON Obeject Prepared to be send as a param to API
     let jObject:any={ ATDRecord: JSON.stringify([{ CompanyDBID: CompanyDBID, EmpId: EmpId
   }]) };
   //Return the response form the API  
-  return this.httpClient.post(this.serviceUrl +"/Login/GetRecord",jObject,this.httpOptions);
+  return this.httpClient.post(optiProAttendanceAPIURL +"/Login/GetRecord",jObject,this.httpOptions);
   }  
    
-  submitSignIn(CompanyDBID:string,EmpId:number,
+  submitSignIn(optiProAttendanceAPIURL:string,CompanyDBID:string,EmpId:number,
     EntryDate:Date,StartDateTime:any,EndDateTime:any,Status:number,
     Imported:boolean,ImportDate:Date,ModifyDate:Date,UserId:any):Observable<any>{
 
@@ -74,18 +74,18 @@ export class AuthenticationService {
   }]) };
 
   //Return the response form the API  
-  return this.httpClient.post(this.serviceUrl +"/Login/SubmitRecord",jObject,this.httpOptions);
+  return this.httpClient.post(optiProAttendanceAPIURL +"/Login/SubmitRecord",jObject,this.httpOptions);
   }  
 
-  getStatusForButtons(CompanyDBID:string,EmpId:number):Observable<any>{
+  getStatusForButtons(optiProAttendanceAPIURL:string,CompanyDBID:string,EmpId:number):Observable<any>{
     //JSON Obeject Prepared to be send as a param to API
     let jObject:any={ ATDRecord: JSON.stringify([{ CompanyDBID: CompanyDBID, EmpId: EmpId
   }]) };
   //Return the response form the API  
-  return this.httpClient.post(this.serviceUrl +"/Login/GetStatus",jObject,this.httpOptions);
+  return this.httpClient.post(optiProAttendanceAPIURL +"/Login/GetStatus",jObject,this.httpOptions);
   }
 
-  submitSignOut(CompanyDBID:string,EmpId:number,
+  submitSignOut(optiProAttendanceAPIURL:string,CompanyDBID:string,EmpId:number,
     EntryDate:Date,StartDateTime:any,EndDateTime:any,Status:number,
     Imported:boolean,ImportDate:Date,ModifyDate:Date,UserId:any):Observable<any>{
 
@@ -106,31 +106,41 @@ export class AuthenticationService {
   }]) };
 
   //Return the response form the API  
-  return this.httpClient.post(this.serviceUrl +"/Login/SignOutRecord",jObject,this.httpOptions);
+  return this.httpClient.post(optiProAttendanceAPIURL +"/Login/SignOutRecord",jObject,this.httpOptions);
   }
 
   //Get Server Date
-  getServerDate(CompanyDBID:string):Observable<any>{
+  getServerDate(optiProAttendanceAPIURL:string,CompanyDBID:string):Observable<any>{
     //JSON Obeject Prepared to be send as a param to API
     let jObject:any={ ATDRecord: JSON.stringify([{ 
      CompanyDBID: CompanyDBID
    }])};
  //Return the response form the API  
- return this.httpClient.post(this.serviceUrl+"/Login/GetServerDate",jObject,this.httpOptions);
+ return this.httpClient.post(optiProAttendanceAPIURL+"/Login/GetServerDate",jObject,this.httpOptions);
  }
 
  //Get Server Date
- getMinutes(CompanyDBID:string,OutDateTime:any):Observable<any>{
+ GetSAPDateFormat(optiProAttendanceAPIURL:string,CompanyDBID:string):Observable<any>{
   //JSON Obeject Prepared to be send as a param to API
   let jObject:any={ ATDRecord: JSON.stringify([{ 
-   CompanyDBID: CompanyDBID,
-   OutDateTime:OutDateTime
+   CompanyDBID: CompanyDBID
  }])};
 //Return the response form the API  
-return this.httpClient.post(this.serviceUrl+"/Login/GetMinutes",jObject,this.httpOptions);
+return this.httpClient.post(optiProAttendanceAPIURL+"/Login/GetSAPDateFormat",jObject,this.httpOptions);
 }
 
-  updateRecord(CompanyDBID:string,EmpId:number,
+ //Get Server Date
+//  getMinutes(CompanyDBID:string,OutDateTime:any):Observable<any>{
+//   //JSON Obeject Prepared to be send as a param to API
+//   let jObject:any={ ATDRecord: JSON.stringify([{ 
+//    CompanyDBID: CompanyDBID,
+//    OutDateTime:OutDateTime
+//  }])};
+// //Return the response form the API  
+// return this.httpClient.post(this.serviceUrl+"/Login/GetMinutes",jObject,this.httpOptions);
+// }
+
+  updateRecord(optiProAttendanceAPIURL:string,CompanyDBID:string,EmpId:number,
     EntryDate:Date,StartDateTime:any,EndDateTime:any,Status:number,
     Imported:boolean,ImportDate:Date,ModifyDate:Date,UserId:any):Observable<any>{
 
@@ -151,7 +161,7 @@ return this.httpClient.post(this.serviceUrl+"/Login/GetMinutes",jObject,this.htt
   }]) };
 
   //Return the response form the API  
-  return this.httpClient.post(this.serviceUrl +"/Login/UpdateRecord",jObject,this.httpOptions);
+  return this.httpClient.post(optiProAttendanceAPIURL +"/Login/UpdateRecord",jObject,this.httpOptions);
   }
 
 }

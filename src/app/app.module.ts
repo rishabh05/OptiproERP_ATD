@@ -9,6 +9,9 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+//Ngx Toaster
+import { ToastrModule } from 'ngx-toastr';
+
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
@@ -24,6 +27,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     GridModule,
     BrowserAnimationsModule,
     ModalModule.forRoot(),
+    ToastrModule.forRoot(),
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
   ],

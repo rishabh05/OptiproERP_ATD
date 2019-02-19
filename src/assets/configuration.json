@@ -1,0 +1,9 @@
+[
+    {
+        "optiProAttendanceAPIURL": "http://localhost:38867/",
+        "deployedFor": "handheld",
+        "version":"",
+        "language": "en",
+        "clientName": "standard"
+    }
+]
