@@ -5,12 +5,15 @@ export class RecordModel {
     OPTM_ENDDATETIME: string;
     DifferenceCal: any;
     CurrentDateFormat: any;
+    CurrentEntryDate: string;
 
-   public constructor (Date, SignInTime, SignOutTime, diffCal, CurrentDateFormat) {
+
+   public constructor (Date, SignInTime, SignOutTime, diffCal, CurrentDateFormat, CurrentEntryDate) {
        this.OPTM_ENTRYDATE = Date;
        this.OPTM_STARTDATETIME = SignInTime;
        this.OPTM_ENDDATETIME = SignOutTime;
        this.DifferenceCal = diffCal;
        this.CurrentDateFormat = CurrentDateFormat;
+       this.CurrentEntryDate = CurrentEntryDate;
    }
 }

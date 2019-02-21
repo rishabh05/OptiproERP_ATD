@@ -2,6 +2,9 @@
        
   <kendo-grid [resizable]="true" [kendoGridBinding]="gridData" [height]="210">
       <kendo-grid-column field="OPTM_ENTRYDATE" title="Entry Date" width="90"> <!--format="{0:c}"-->
+        <ng-template kendoGridCellTemplate let-dataItem>
+            {{dataItem.OPTM_ENTRYDATE | date: dataItem.CurrentEntryDate}}
+            </ng-template>  
       </kendo-grid-column>
       <kendo-grid-column field="OPTM_STARTDATETIME" title="{{language.signintime}}">
           <ng-template kendoGridCellTemplate let-dataItem>

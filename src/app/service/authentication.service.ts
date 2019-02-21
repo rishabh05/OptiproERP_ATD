@@ -32,7 +32,7 @@ export class AuthenticationService {
    //This function will get Company acc. to User
    getCompany(loginId:string,psURL:string):Observable<any>{
     //JSON Obeject Prepared to be send as a param to API
-    let jObject:any={ Username: JSON.stringify([{ Username: loginId ,Product: "SFES"}]) };
+    let jObject:any={ Username: JSON.stringify([{ Username: loginId ,Product: "ATD"}]) };
     //Return the response form the API  
     return this.httpClient.post(psURL+"/api/login/GetCompaniesAndLanguages",jObject,this.httpOptions)
   }

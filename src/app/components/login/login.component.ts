@@ -156,6 +156,10 @@ export class LoginComponent implements OnInit {
 
     this.auth.getServerDate(this.arrConfigData[0].optiProAttendanceAPIURL,this.selectedValue.OPTM_COMPID).subscribe(
       data => {
+
+        // if(data = null || data == undefined){
+
+        // }
         
         if(this.OutDateTime > new Date(data[0].DATEANDTIME)){
           this.toastr.error('', this.language.alert_signouttime_notgreater, this.Commonser.messageConfig.iconClasses.error);
@@ -221,6 +225,7 @@ export class LoginComponent implements OnInit {
     this.clickSignIn = false;
     for(let i=0 ;i<this.recordModel.length;i++){
       this.recordModel[i].CurrentDateFormat = this.SAPDateFormat[0];
+      this.recordModel[i].CurrentEntryDate = this.CurrentDateFormat;
       if(this.recordModel[i].OPTM_ENDDATETIME != null){
         let diffStDt: any = new Date(this.recordModel[i].OPTM_STARTDATETIME).getTime();
         let diffEdDt: any = new Date(this.recordModel[i].OPTM_ENDDATETIME).getTime();
@@ -232,6 +237,8 @@ export class LoginComponent implements OnInit {
 
        let diffHours = (difftime.getUTCHours());
        let diffMinutes = (difftime.getUTCMinutes());
+       //let diffSeconds = (difftime.getUTCSeconds());
+      // console.log(diffSeconds);
        var showHours;
        var showMinutes ;
      
@@ -321,6 +328,12 @@ export class LoginComponent implements OnInit {
 
         this.auth.GetSAPDateFormat(this.arrConfigData[0].optiProAttendanceAPIURL,this.selectedValue.OPTM_COMPID).subscribe(
           dataNew => {
+
+            if(dataNew == null || dataNew == undefined){
+              this.CurrentDateFormat = 'MM/dd/yy';
+              this.CurrentTimeFormat = 'HH:mm';              
+            }
+            else {
          
             switch(dataNew[0].DateVal){            
             case '0':
@@ -361,6 +374,7 @@ export class LoginComponent implements OnInit {
             this.CurrentTimeFormat = 'h:mm a';
             break;
           }
+        }
 
           this.SAPDateFormat.push({DateFormat: this.CurrentDateFormat + ' ' + this.CurrentTimeFormat });
 
@@ -389,6 +403,7 @@ export class LoginComponent implements OnInit {
 
         for(let i=0 ;i<this.recordModel.length;i++){
           this.recordModel[i].CurrentDateFormat = this.SAPDateFormat[0]; 
+          this.recordModel[i].CurrentEntryDate = this.CurrentDateFormat;
           
           if(this.recordModel[i].OPTM_ENDDATETIME != null){
           let diffStDt: any = new Date(this.recordModel[i].OPTM_STARTDATETIME).getTime();
