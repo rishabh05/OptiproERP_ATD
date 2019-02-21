@@ -120,9 +120,16 @@ app-login {
 .form-control {
     /* border-radius: 0 */
 }
-
+app-listing {
+  max-width: 100%;
+}
+.timing_listing-wrapper kendo-grid.k-widget.k-grid {
+  max-width: 100%;
+  width: 100%;
+}
 .timing_listing-wrapper {
     padding: 0 50px 20px;
+    max-width: 100%;
 }
 
 .timing_listing-wrapper .k-grid th {
@@ -226,7 +233,10 @@ table th, table td {
     word-break: break-word;
     vertical-align: middle !important;
 }
-
+.owl-dt-calendar-table .owl-dt-calendar-cell-active:focus>.owl-dt-calendar-cell-content:not(.owl-dt-calendar-cell-selected){
+  background-color: #00b2f5;
+  color: #fff;
+}
 /* Css for tost plugin start */
 /* position */
 .toast-center-center {

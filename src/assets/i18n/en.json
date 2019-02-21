@@ -15,7 +15,7 @@
     "signin_placeholder": "Enter Sign In Time",
     "signouttime": "Sign Out Time",
     "signout_placeholder": "Enter Sign Out Time",
-    "difference": "Difference (in Hours)",
+    "difference": "Work Hours",
     "selectcompany": "Select Company",
     "error_reading_file": "There was some error while reading language file",
     "error_getting_psurl": "There was an error in getting psURL:",

@@ -1,7 +1,7 @@
 <div class="timing_listing-wrapper mb-5">
        
-  <kendo-grid [kendoGridBinding]="gridData" [height]="210">
-      <kendo-grid-column field="OPTM_ENTRYDATE" title="Entry Date" width="100"> <!--format="{0:c}"-->
+  <kendo-grid [resizable]="true" [kendoGridBinding]="gridData" [height]="210">
+      <kendo-grid-column field="OPTM_ENTRYDATE" title="Entry Date" width="90"> <!--format="{0:c}"-->
       </kendo-grid-column>
       <kendo-grid-column field="OPTM_STARTDATETIME" title="{{language.signintime}}">
           <ng-template kendoGridCellTemplate let-dataItem>
@@ -13,9 +13,9 @@
               {{dataItem.OPTM_ENDDATETIME | date: dataItem.CurrentDateFormat.DateFormat}}
               </ng-template> 
       </kendo-grid-column>
-     <kendo-grid-column field="DifferenceCal" title="{{language.difference}}">
+     <kendo-grid-column width="88" field="DifferenceCal" title="{{language.difference}}">
             <ng-template kendoGridCellTemplate let-dataItem>
-                {{dataItem.DifferenceCal}}
+                {{dataItem.DifferenceCal }}
                 </ng-template> 
         </kendo-grid-column>
   </kendo-grid>

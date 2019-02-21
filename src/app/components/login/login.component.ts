@@ -224,11 +224,33 @@ export class LoginComponent implements OnInit {
       if(this.recordModel[i].OPTM_ENDDATETIME != null){
         let diffStDt: any = new Date(this.recordModel[i].OPTM_STARTDATETIME).getTime();
         let diffEdDt: any = new Date(this.recordModel[i].OPTM_ENDDATETIME).getTime();
-        let time = diffEdDt - diffStDt;
-        let calTime = time / (3600 * 1000);
+        let difftime = new Date(diffEdDt - diffStDt)
+        //let calTime = time / (3600 * 1000);
         
-        this.recordModel[i].DifferenceCal = Math.round(calTime * 100.0)/100.0;
-       } 
+       // this.recordModel[i].DifferenceCal = Math.round(calTime * 100.0)/100.0;
+       
+
+       let diffHours = (difftime.getUTCHours());
+       let diffMinutes = (difftime.getUTCMinutes());
+       var showHours;
+       var showMinutes ;
+     
+     if(diffHours<10){
+       showHours = '0'+diffHours;
+     }
+     else{
+       showHours = diffHours;
+     }
+
+     if(diffMinutes<10){
+       showMinutes = '0'+diffMinutes;
+     }
+     else{
+       showMinutes = diffMinutes;
+     }
+
+     this.recordModel[i].DifferenceCal = showHours+ ':'+ showMinutes;  
+      } 
     }
     console.log(this.SAPDateFormat);
    });
@@ -371,10 +393,32 @@ export class LoginComponent implements OnInit {
           if(this.recordModel[i].OPTM_ENDDATETIME != null){
           let diffStDt: any = new Date(this.recordModel[i].OPTM_STARTDATETIME).getTime();
           let diffEdDt: any = new Date(this.recordModel[i].OPTM_ENDDATETIME).getTime();
-          let time = diffEdDt - diffStDt;
-          let calTime = time / (3600 * 1000);
+          let difftime = new Date(diffEdDt - diffStDt);
+          // let calTime = time / (3600 * 1000);
           
-          this.recordModel[i].DifferenceCal = Math.round(calTime * 100.0)/100.0;
+          // this.recordModel[i].DifferenceCal = Math.round(calTime * 100.0)/100.0;
+
+          let diffHours = (difftime.getUTCHours());
+          let diffMinutes = (difftime.getUTCMinutes());
+          var showHours;
+          var showMinutes ;
+        
+        if(diffHours<10){
+          showHours = '0'+diffHours;
+        }
+        else{
+          showHours = diffHours;
+        }
+
+        if(diffMinutes<10){
+          showMinutes = '0'+diffMinutes;
+        }
+        else{
+          showMinutes = diffMinutes;
+        }
+
+        this.recordModel[i].DifferenceCal = showHours+ ':'+ showMinutes;
+
           }
         }              
       });    
