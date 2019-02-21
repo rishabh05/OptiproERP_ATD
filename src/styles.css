@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 @import "~ng-pick-datetime/assets/style/picker.min.css";
 html {
     min-height: 100vh;
@@ -14,6 +15,7 @@ body {
     justify-items: center;
     height: 100%;
     align-self: center;
+    font-family: 'Nunito', sans-serif;
 }
 
 app-root,
@@ -111,11 +113,12 @@ app-login {
 .login-box h1 {
     line-height: 1;
     color: #fff;
+    font-size: 2.2rem;
+    margin-bottom: 3rem !important;
 }
-
 .btn,
 .form-control {
-    border-radius: 0
+    /* border-radius: 0 */
 }
 
 .timing_listing-wrapper {
