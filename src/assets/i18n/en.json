@@ -26,5 +26,6 @@
     "alert_table_notexists": "Table does not exist in this company",
     "alert_incorrect_useridpassword": "Incorrect User Id or Password",
     "error_login": "Error in Login",
-    "alert_nocompany_assigned": "No Company is assigned to the user"
+    "alert_nocompany_assigned": "No Company is assigned to the user",
+    "alert_signouttime_notless": "Sign Out time cannot be less than Sign In time"
 }

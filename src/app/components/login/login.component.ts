@@ -167,7 +167,15 @@ export class LoginComponent implements OnInit {
           this.toastr.error('', this.language.alert_difference_oneminute, this.Commonser.messageConfig.iconClasses.error);
           return;
           }
-        }        
+        }     
+        
+        if(this.OutDateTime < new Date(this.showInTimeException)){      
+          console.log(this.OutDateTime);
+          console.log(new Date(this.showInTimeException));
+
+          this.toastr.error('', this.language.alert_signouttime_notless, this.Commonser.messageConfig.iconClasses.error);
+          return;        
+        }  
 
         this.status = 3;
         this.auth.updateRecord(this.arrConfigData[0].optiProAttendanceAPIURL,this.selectedValue.OPTM_COMPID,this.selectedValue.OPTM_EMPID,this.endDate,this.endDate,this.OutDateTime,this.status,this.imported,this.importDate,this.modifyDate,this.loginId).subscribe(
